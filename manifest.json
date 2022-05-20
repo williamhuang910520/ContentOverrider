@@ -1,0 +1,40 @@
+{
+    "name": "Content Overrider",
+    "description": "Rewrite your content that you don't want to display.",
+    "version": "1.0",
+    "manifest_version": 3,
+    "permissions": [
+        "storage",
+        "tabs"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "js": [
+                "jquery-3.6.0.min.js",
+                "scripts.js"
+            ],
+            "matches": [
+                "https://eclass.yuntech.edu.tw/*",
+                "https://www.youtube.com/*"
+            ]
+        }
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "/image/tooruche_16.png",
+            "32": "/image/tooruche_32.png",
+            "64": "/image/tooruche_64.png",
+            "128": "/image/tooruche_128.png"
+        }
+    },
+    "icons": {
+        "16": "/image/tooruche_16.png",
+        "32": "/image/tooruche_32.png",
+        "64": "/image/tooruche_64.png",
+        "128": "/image/tooruche_128.png"
+    }
+}
