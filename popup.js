@@ -1,7 +1,15 @@
-async function getCurrentTab() {
-    let queryOptions = { active: true, currentWindow: true };
-    let [tab] = await chrome.tabs.query(queryOptions);
-    return tab;
-}
+window.onload = () =>{
+    let mySwitch = document.getElementById("checkIsEnable");
+    chrome.storage.sync.get("state", ({ state }) => {
+        mySwitch.checked = state;
+    });
+    
+    mySwitch.addEventListener("change", () => {
+        state = mySwitch.checked;
+        chrome.storage.sync.set({ state }, () => {
+            console.log('State is set to ' + !state);
+        });
+        chrome.tabs.reload();
+    });
 
-console.log(getCurrentTab());
+}
